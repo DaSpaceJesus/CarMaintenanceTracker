@@ -104,28 +104,28 @@ def checkf(check, mileage, last_maintenance, change_interval206):
 def updatef(update, mileage, last_maintenance):
     match update:
         case 1:
-            last_maintenance["last_engine_oil"] : mileage
+            last_maintenance["last_engine_oil"] = mileage
 
         case 2:
-            last_maintenance["last_airfilter"] : mileage
+            last_maintenance["last_airfilter"] = mileage
 
         case 3:
-            last_maintenance["last_cabin_airfilter"] : mileage
+            last_maintenance["last_cabin_airfilter"] = mileage
 
         case 4:
-            last_maintenance["last_gasfilter"]: mileage
+            last_maintenance["last_gasfilter"] = mileage
 
         case 5:
-            last_maintenance["last_engine_sparkplug"] : mileage
+            last_maintenance["last_engine_sparkplug"] = mileage
 
         case 6:
-            last_maintenance["last_brake_oil"]: mileage
+            last_maintenance["last_brake_oil"] = mileage
 
         case 7:
-            last_maintenance["last_timebelt"]: mileage
+            last_maintenance["last_timebelt"] = mileage
 
         case 8:
-            last_maintenance["last_manualgearbox_oil"]: mileage
+            last_maintenance["last_manualgearbox_oil"] = mileage
 
 
 
