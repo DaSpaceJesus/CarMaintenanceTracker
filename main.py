@@ -1,5 +1,6 @@
 import json
 import os
+from unittest import case
 
 data_file ='data.json'
 
@@ -104,32 +105,63 @@ def checkf(check, mileage, last_maintenance, change_interval206):
 def updatef(update, mileage, last_maintenance):
     match update:
         case 1:
-            last_maintenance["last_engine_oil"] = mileage
+            if mileage > last_maintenance["last_engine_oil"]:
+                last_maintenance["last_engine_oil"] = mileage
+            else:
+                print("Wrong mileage!")
 
         case 2:
-            last_maintenance["last_airfilter"] = mileage
+            if mileage > last_maintenance["last_airfilter"]:
+                last_maintenance["last_airfilter"] = mileage
+            else:
+                print("Wrong mileage!")
 
         case 3:
-            last_maintenance["last_cabin_airfilter"] = mileage
+            if mileage > last_maintenance["last_cabin_airfilter"]:
+                last_maintenance["last_cabin_airfilter"] = mileage
+            else:
+                print("Wrong mileage!")
+
 
         case 4:
-            last_maintenance["last_gasfilter"] = mileage
+            if mileage > last_maintenance["last_gasfilter"]:
+                last_maintenance["last_gasfilter"] = mileage
+            else:
+                print("Wrong mileage!")
+
 
         case 5:
-            last_maintenance["last_engine_sparkplug"] = mileage
+            if mileage > last_maintenance["last_engine_sparkplug"]:
+                last_maintenance["last_engine_sparkplug"] = mileage
+            else:
+                print("Wrong mileage!")
+
 
         case 6:
-            last_maintenance["last_brake_oil"] = mileage
+            if mileage > last_maintenance["last_brake_oil"]:
+                last_maintenance["last_brake_oil"] = mileage
+            else:
+                print("Wrong mileage!")
+
 
         case 7:
-            last_maintenance["last_timebelt"] = mileage
+            if mileage > last_maintenance["last_timebelt"]:
+                last_maintenance["last_timebelt"] = mileage
+            else:
+                print("Wrong mileage!")
+
 
         case 8:
-            last_maintenance["last_manualgearbox_oil"] = mileage
+            if mileage > last_maintenance["last_manualgearbox_oil"]:
+                last_maintenance["last_manualgearbox_oil"] = mileage
+            else:
+                print("Wrong mileage!\n")
 
 
-
-
+def reset():
+    if os.path.exists(data_file):
+        os.remove(data_file)
+        print("Removed Database file!")
 
 
 def main():
@@ -142,7 +174,8 @@ def main():
     if choice == 1:
         change_interval206 = change_intervals206()
 
-    do =input("Do you want to\n 1. Check\n or\n 2. Update last maintenance? ")
+    do =input("Do you want to\n 1. Check\n or\n 2. Update last maintenance?\n 3. Reset saved mileages?\n"
+              " ")
     if do == "1":
         mileage = int(input("Enter Car's mileage(In KM): "))
 
@@ -152,12 +185,24 @@ def main():
         checkf(check, mileage, last_maintenance, change_interval206)
 
     elif do == "2":
-        print("which one do you want to update?\n 1. engine oil\n 2. air filter\n 3. cabin air filter\n 4. gas filter")
-        print(" 5. engine_sparkplug\n 6. brake_oil\n 7. time belt\n 8. manual gearbox")
-        update = int(input("Enter your choice: "))
-        mileage = int(input("Enter Car's update mileage(In KM): "))
-        updatef(update, mileage, last_maintenance)
+        next = True
+        while (next):
+            print(
+                "which one do you want to update?\n 1. engine oil\n 2. air filter\n 3. cabin air filter\n 4. gas filter")
+            print(" 5. engine_sparkplug\n 6. brake_oil\n 7. time belt\n 8. manual gearbox")
+            update = int(input("Enter your choice: "))
+            mileage = int(input("Enter Car's update mileage(In KM): "))
+            updatef(update, mileage, last_maintenance)
+            multiple = int(input("Do you want to continue updates?\n1 for yes\n2 for no\n"))
+            if multiple == 2:
+                next = False
         save_data(last_maintenance)
+
+    elif do == "3":
+        reset()
+
+
+
 
 
 
