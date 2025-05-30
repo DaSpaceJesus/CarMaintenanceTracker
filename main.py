@@ -76,25 +76,63 @@ def checkf(check, mileage, last_maintenance, change_interval206):
         print("You're fine now!")
 
 
+def updatef(update, mileage):
+    match update:
+        case 1:
+            last_maintenance["last_engine_oil"] : mileage
+
+        case 2:
+            last_maintenance["last_airfilter"] : mileage
+
+        case 3:
+            last_maintenance["last_cabin_airfilter"] : mileage
+
+        case 4:
+            last_maintenance["last_gasfilter"]: mileage
+
+        case 5:
+            last_maintenance["last_engine_sparkplug"] : mileage
+
+        case 6:
+            last_maintenance["last_brake_oil"]: mileage
+
+        case 7:
+            last_maintenance["last_timebelt"]: mileage
+
+        case 8:
+            last_maintenance["last_manualgearbox_oil"]: mileage
+
+
+
 
 
 
 def main():
     last_maintenance = variables()
     print("Welcome to Car Maintenance Tracker\n")
-    print("supported car models:\n 1. Peugeot 206\n 2. Changan CS55+\n")
+    print("supported car models:\n 1. Peugeot 206/207\n 2. Changan CS55+\n")
     choice = int(input("Enter your choice: "))
     model, modelname = car_model(choice)
     print(f'selected car model: {modelname}\n')
     if choice == 1:
         change_interval206 = change_intervals206()
 
-    mileage = int(input("Enter Car's mileage(In KM): "))
+    do =input("Do you want to\n 1. Check\n or\n 2. Update last maintenance?")
+    if do == "1":
+        mileage = int(input("Enter Car's mileage(In KM): "))
 
-    print("which one do you want to check?\n 1. engine oil\n 2. air filter\n 3. cabin air filter\n 4. gas filter")
-    print(" 5. engine_sparkplug\n 6. brake_oil\n 7. time belt\n 8. manual gearbox")
-    check = int(input("Enter your choice: "))
-    checkf(check, mileage, last_maintenance, change_interval206)
+        print("which one do you want to check?\n 1. engine oil\n 2. air filter\n 3. cabin air filter\n 4. gas filter")
+        print(" 5. engine_sparkplug\n 6. brake_oil\n 7. time belt\n 8. manual gearbox")
+        check = int(input("Enter your choice: "))
+        checkf(check, mileage, last_maintenance, change_interval206)
+    elif do == "2":
+        print("which one do you want to update?\n 1. engine oil\n 2. air filter\n 3. cabin air filter\n 4. gas filter")
+        print(" 5. engine_sparkplug\n 6. brake_oil\n 7. time belt\n 8. manual gearbox")
+        update = int(input("Enter your choice: "))
+        mileage = int(input("Enter Car's update mileage(In KM): "))
+        updatef(update, mileage)
+
+
 
 
 
