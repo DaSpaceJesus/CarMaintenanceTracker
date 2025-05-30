@@ -1,6 +1,30 @@
 import json
 import os
 
+data_file ='data.json'
+
+def load_data():
+    if os.path.exists(data_file):
+        with open(data_file, 'r')as f:
+             return json.load(f)
+    else:
+        return {
+    "last_engine_oil" : 0,
+    "last_airfilter" : 0,
+    "last_cabin_airfilter" : 0,
+    "last_gasfilter" : 0,
+    "last_engine_sparkplug" : 0,
+    "last_brake_oil" : 0,
+    "last_timebelt" : 0,
+    "last_manualgearbox_oil" : 0
+    }
+
+def save_data(data):
+    with open(data_file, 'w')as f:
+        json.dump(data, f, indent=4)
+
+
+
 def car_model(choice):
     if choice == 1:
         model = 206
@@ -109,7 +133,7 @@ def updatef(update, mileage, last_maintenance):
 
 
 def main():
-    last_maintenance = variables()
+    last_maintenance = load_data()
     print("Welcome to Car Maintenance Tracker\n")
     print("supported car models:\n 1. Peugeot 206/207\n 2. Changan CS55+\n")
     choice = int(input("Enter your choice: "))
@@ -133,6 +157,7 @@ def main():
         update = int(input("Enter your choice: "))
         mileage = int(input("Enter Car's update mileage(In KM): "))
         updatef(update, mileage, last_maintenance)
+        save_data(last_maintenance)
 
 
 
