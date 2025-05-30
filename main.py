@@ -4,21 +4,33 @@ from unittest import case
 
 data_file ='data.json'
 
-def load_data():
+def load_data(model):
     if os.path.exists(data_file):
         with open(data_file, 'r')as f:
              return json.load(f)
     else:
-        return {
-    "last_engine_oil" : 0,
-    "last_airfilter" : 0,
-    "last_cabin_airfilter" : 0,
-    "last_gasfilter" : 0,
-    "last_engine_sparkplug" : 0,
-    "last_brake_oil" : 0,
-    "last_timebelt" : 0,
-    "last_manualgearbox_oil" : 0
-    }
+        if model == 206:
+            return {
+                "last_engine_oil": 0,
+                "last_airfilter": 0,
+                "last_cabin_airfilter": 0,
+                "last_gasfilter": 0,
+                "last_engine_sparkplug": 0,
+                "last_brake_oil": 0,
+                "last_timebelt": 0,
+                "last_manualgearbox_oil": 0
+            }
+        elif model == 55:
+            return {
+                "last_engine_oil": -5000,
+                "last_airfilter": -5000,
+                "last_cabin_airfilter": -5000,
+                "last_gasfilter": -5000,
+                "last_engine_sparkplug": -5000,
+                "last_brake_oil": -5000,
+                "last_timebelt": -5000,
+                "last_manualgearbox_oil": -5000
+            }2
 
 def save_data(data):
     with open(data_file, 'w')as f:
@@ -166,11 +178,11 @@ def reset():
 
 
 def main():
-    last_maintenance = load_data()
     print("Welcome to Car Maintenance Tracker\n")
     print("supported car models:\n 1. Peugeot 206/207\n 2. Changan CS55+\n")
     choice = int(input("Enter your choice: "))
     model, modelname = car_model(choice)
+    last_maintenance = load_data(model)
     print(f'selected car model: {modelname}\n')
     if choice == 1:
         change_interval = change_intervals206()
