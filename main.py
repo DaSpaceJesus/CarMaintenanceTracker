@@ -1,4 +1,5 @@
-import math
+import json
+import os
 
 def car_model(choice):
     if choice == 1:
@@ -76,7 +77,7 @@ def checkf(check, mileage, last_maintenance, change_interval206):
         print("You're fine now!")
 
 
-def updatef(update, mileage):
+def updatef(update, mileage, last_maintenance):
     match update:
         case 1:
             last_maintenance["last_engine_oil"] : mileage
@@ -117,7 +118,7 @@ def main():
     if choice == 1:
         change_interval206 = change_intervals206()
 
-    do =input("Do you want to\n 1. Check\n or\n 2. Update last maintenance?")
+    do =input("Do you want to\n 1. Check\n or\n 2. Update last maintenance? ")
     if do == "1":
         mileage = int(input("Enter Car's mileage(In KM): "))
 
@@ -125,12 +126,13 @@ def main():
         print(" 5. engine_sparkplug\n 6. brake_oil\n 7. time belt\n 8. manual gearbox")
         check = int(input("Enter your choice: "))
         checkf(check, mileage, last_maintenance, change_interval206)
+
     elif do == "2":
         print("which one do you want to update?\n 1. engine oil\n 2. air filter\n 3. cabin air filter\n 4. gas filter")
         print(" 5. engine_sparkplug\n 6. brake_oil\n 7. time belt\n 8. manual gearbox")
         update = int(input("Enter your choice: "))
         mileage = int(input("Enter Car's update mileage(In KM): "))
-        updatef(update, mileage)
+        updatef(update, mileage, last_maintenance)
 
 
 
