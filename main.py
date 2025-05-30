@@ -11,7 +11,7 @@ def car_model(choice):
     return model, modelname
 
 def variables():
-    last_maintenance: {
+    last_maintenance= {
     "last_engine_oil" : 0,
     "last_airfilter" : 0,
     "last_cabin_airfilter" : 0,
@@ -36,21 +36,58 @@ def change_intervals206():
     }
     return change_interval206
 
-def checkf(check):
+def checkf(check, mileage, last_maintenance, change_interval206):
     match check:
         case 1:
-            if mileage > (last_engine_oil + engine_oil_interval206):
-                print("You should Change it!")
+            last = last_maintenance["last_engine_oil"]
+            interval = change_interval206["engine_oil_interval206"]
+
+        case 2:
+            last = last_maintenance["last_airfilter"]
+            interval = change_interval206["airfilter_interval206"]
+
+        case 3:
+            last = last_maintenance["last_cabin_airfilter"]
+            interval = change_interval206["cabin_airfilter_interval206"]
+
+        case 4:
+            last = last_maintenance["last_gasfilter"]
+            interval = change_interval206["gasfilter_interval206"]
+
+        case 5:
+            last = last_maintenance["last_engine_sparkplug"]
+            interval = change_interval206["engine_sparkplug_interval206"]
+
+        case 6:
+            last = last_maintenance["last_brake_oil"]
+            interval = change_interval206["brake_oil_interval206"]
+
+        case 7:
+            last = last_maintenance["last_timebelt"]
+            interval = change_interval206["timebelt_interval206"]
+
+        case 8:
+            last = last_maintenance["last_manualgearbox_oil"]
+            interval = change_interval206["manualgearbox_oil_interval206"]
+
+    if mileage > (last + interval):
+        print("You should Change it!")
+    else:
+        print("You're fine now!")
+
+
+
+
 
 def main():
-    variables()
+    last_maintenance = variables()
     print("Welcome to Car Maintenance Tracker\n")
     print("supported car models:\n 1. Peugeot 206\n 2. Changan CS55+\n")
     choice = int(input("Enter your choice: "))
     model, modelname = car_model(choice)
     print(f'selected car model: {modelname}\n')
     if choice == 1:
-        change_intervals206()
+        change_interval206 = change_intervals206()
 
     mileage = int(input("Enter Car's mileage(In KM): "))
 
