@@ -30,7 +30,7 @@ def load_data(model):
                 "last_brake_oil": -5000,
                 "last_timebelt": -5000,
                 "last_manualgearbox_oil": -5000
-            }2
+            }
 
 def save_data(data):
     with open(data_file, 'w')as f:
