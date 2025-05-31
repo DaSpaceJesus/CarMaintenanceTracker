@@ -9,7 +9,7 @@ A simple app to track your car's maintenance history. Log services like oil chan
 
 ## Technologies Used
 
-- python 3
+- Python 3
 
 ## Getting Started
 
