@@ -1,6 +1,6 @@
 # Car Maintenance Tracker 🚗
 
-A simple Flask web app to track your car's maintenance history. Log services like oil changes, tire rotations, inspections, and more—all in one place.
+A simple app to track your car's maintenance history. Log services like oil changes and more—all in one place.
 
 ## Features
 
