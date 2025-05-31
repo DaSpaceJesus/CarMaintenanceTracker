@@ -5,15 +5,11 @@ A simple Flask web app to track your car's maintenance history. Log services lik
 ## Features
 
 - Add, edit, and delete maintenance records
-- Store service type, date, mileage, and notes
-- View a complete service history
+- Store service type and mileage
 
 ## Technologies Used
 
-- Python 3
-- Flask
-- SQLite
-- HTML/CSS (Jinja2 templates)
+- python 3
 
 ## Getting Started
 
@@ -29,31 +25,11 @@ A simple Flask web app to track your car's maintenance history. Log services lik
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. **Install dependencies**
+3. **Run the app**
    ```bash
-   pip install -r requirements.txt
+   python main.py
    ```
 
-4. **Run the app**
-   ```bash
-   python app.py
-   ```
-
-5. **Open in your browser**
-   ```
-   http://127.0.0.1:5000/
-   ```
-
-## Folder Structure
-
-```
-CarMaintenanceTracker/
-├── app.py
-├── templates/
-├── static/
-├── requirements.txt
-└── README.md
-```
 
 ## License
 
