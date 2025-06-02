@@ -30,6 +30,11 @@ A simple app to track your car's maintenance history. Log services like oil chan
    python main.py
    ```
 
+## Future Development
+
+- Showing next change mileage for each part
+- Showing the remaing mileage till next change mileage for each part
+- Supprting mile
 
 ## License
 
